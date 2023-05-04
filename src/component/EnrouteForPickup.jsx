@@ -30,8 +30,8 @@ const EnrouteForPickup = () => {
   const url2Data = {
     filters: {
       shipmentStatus: ["Planned", "Created"],
-      // customer: ["EPIROC"],
-      customer: ["EPIROC"],
+      // customer:["BHARAT FRITZ WERNER LIMITED"],
+      customer: ["BHARAT FRITZ WERNER LIMITED"],
       shipmentDate: {
         from: 1680287400000,
       },
@@ -178,7 +178,7 @@ const EnrouteForPickup = () => {
               <thead>
               <tr>
                   <th className="table-th">ORder number </th>
-                  <th className="table-th">Job Number </th>
+                  
                   <th className="table-th">Vehicle No. </th>
                   <th className="table-th">Consignor</th>
                   <th className="table-th">Consignee</th>
@@ -196,13 +196,7 @@ const EnrouteForPickup = () => {
                   return (
                     <tr>
                     <td className="td-main">{res.order.orderNumber}</td>
-                    <td className="td-main">
-                          {res.order.customFields
-                            .filter((res) => res.fieldKey === "job no")
-                            .map((res) => {
-                              return <td className="td-main">{res.value}</td>;
-                            })}
-                        </td>
+                   
                     <td className="td-main">
                       {
                         res.shipment.fleetInfo.vehicle

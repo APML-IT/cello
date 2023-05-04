@@ -38,8 +38,8 @@ const Main = () => {
   const url2Data = {
     filters: {
       shipmentStatus: ["Planned", "Created", "Completed"],
-      // customer: ["EPIROC"],
-      customer: ["EPIROC"],
+      // customer:["BHARAT FRITZ WERNER LIMITED"],
+      customer:["BHARAT FRITZ WERNER LIMITED"],
       shipmentDate: {
         from: 1680287400000,
       },

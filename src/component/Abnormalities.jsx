@@ -23,10 +23,10 @@ const Abnormalities = () => {
   var param1 = {
     filters: {
       shipmentStatus: ["Planned", "Created"],
-      customer: ["EPIROC"],
+      customer:["BHARAT FRITZ WERNER LIMITED"],
       // "origin": ["Navi Mumbai","Mumbai","Bhiwandi","Hyderabad","Bangalore","Chennai"],
       shipmentDate: {
-        from: 1673069307455,
+        from: 1680287400000,
       },
     },
   };
@@ -44,8 +44,8 @@ const Abnormalities = () => {
   var param2 = {
     filters: {
       shipmentStatus: ["Completed"],
-      // customer: ["EPIROC"],
-      customer: ["EPIROC"],
+      // customer:["BHARAT FRITZ WERNER LIMITED"],
+      customer:["BHARAT FRITZ WERNER LIMITED"],
       // "origin": ["Navi Mumbai","Mumbai","Bhiwandi","Hyderabad","Bangalore","Chennai"],
       shipmentDate: {
         from: 1680287400000,
@@ -57,7 +57,7 @@ const Abnormalities = () => {
     filters: {
      customer:["BHARAT FRITZ WERNER LIMITED"],
       orderDate: {
-        from: 1677500670000,
+        from: 1680287400000,
       },
     },
     limit: 5000,

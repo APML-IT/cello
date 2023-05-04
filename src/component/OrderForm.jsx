@@ -598,7 +598,7 @@ export default function OrderForm() {
                     <label>Destination</label>
                     <input
                       type="text"
-                      name="PMNumber"
+                      name="destination"
                       onChange={handleChanges}
                       required
                     />

@@ -23,10 +23,10 @@ const TrackingUpdates = () => {
   var param1 = {
     filters: {
       shipmentStatus: ["Planned", "Created"],
-      customer: ["EPIROC"],
+      customer:["BHARAT FRITZ WERNER LIMITED"],
       // "origin": ["Navi Mumbai","Mumbai","Bhiwandi","Hyderabad","Bangalore","Chennai"],
       shipmentDate: {
-        from: 1673069307455,
+        from: 1680287400000,
       },
     },
   };
@@ -44,7 +44,7 @@ const TrackingUpdates = () => {
   var param2 = {
     filters: {
       shipmentStatus: ["Completed"],
-      customer: ["EPIROC"],
+      customer:["BHARAT FRITZ WERNER LIMITED"],
       // "origin": ["Navi Mumbai","Mumbai","Bhiwandi","Hyderabad","Bangalore","Chennai"],
       shipmentDate: {
         from: 1680287400000,

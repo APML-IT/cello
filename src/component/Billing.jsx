@@ -30,8 +30,8 @@ function Billing() {
   const url2Data = {
     filters: {
       shipmentStatus: ["Completed"],
-      // customer: ["EPIROC"],
-      customer: ["EPIROC"],
+      // customer:["BHARAT FRITZ WERNER LIMITED"],
+      customer:["BHARAT FRITZ WERNER LIMITED"],
       shipmentDate: {
         from: 1680287400000,
       },
@@ -587,7 +587,7 @@ function Billing() {
                   <th className="table-th">GC number </th>
                   {/* <th className="table-th">S.O NUMBER/PO </th>
                   <th className="table-th">WBS/COST </th> */}
-                  <th className="table-th">order by </th>
+                  
                   {/* <th className="table-th">po name </th>
                   <th className="table-th">po date </th> */}
                   {/* <th className="table-th">type of trip </th> */}
@@ -629,13 +629,7 @@ function Billing() {
                         {res.shipment.consignments[0].consignmentNo}
                       </td>
                      
-                      <td className="td-main">
-                        {res.order.customFields
-                          .filter((res) => res.fieldKey === "orderby")
-                          .map((res) => {
-                            return <>{res.value}</>;
-                          })}
-                      </td>
+                     
                      
                     
                       <td className="td-main">

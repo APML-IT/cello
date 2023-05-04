@@ -30,7 +30,7 @@ export async function submitForm(inputs, ...temp) {
     Destination: null,
     "Vehicle Type": temp[0][3][0],
     "Transportation Service": "FTL",
-    "Customer(*)": "EPIROC",
+    "Customer(*)": "BHARAT FRITZ WERNER LIMITED",
     "Consignor(*)": inputs.Origin,
     "Consignee(*)": "Unknown",
     "Pickup Date(DD-MM-YYYY)": "16-02-2023",
@@ -40,18 +40,15 @@ export async function submitForm(inputs, ...temp) {
     "Measurement Type(*)": "weight",
     "Quantity(*)": "1",
     "Quantity UOM(*)": "Units",
-    "cf_quantity" : inputs.PMName,
     "cf_Material" : inputs.Material,
     "cf_SpecialInstruction" : inputs.SHPL_instructions,
-    "cf_job no" : inputs.ConsigneeAddress,
-    "cf_orderby" : "Sandeep Jadhav",
     "cf_expected pickup date" : formattedDate,
     "cf_expected delivery date" : formattedDate1,
-    "cf_Consignee 1": temp[0][2].cc1,
-    "cf_Consignee 2": temp[0][2].cc2,
-    "cf_Consignee 3": temp[0][2].cc3,
-    "cf_Consignee 4": temp[0][2].cc4,
-    "cf_destination": inputs.PMNumber,
+    // "cf_Consignee 1": temp[0][2].cc1,
+    // "cf_Consignee 2": temp[0][2].cc2,
+    // "cf_Consignee 3": temp[0][2].cc3,
+    // "cf_Consignee 4": temp[0][2].cc4,
+    "cf_destination": inputs.destination,
     
   };
   orders.push(order);
@@ -102,7 +99,7 @@ export function onOriginChange(sO) {
       break;
   }
 
-  data[0] = "EPIROC";
+  data[0] = "BHARAT FRITZ WERNER LIMITED";
   data[1] = selectedLocation;
   data[2] = sO;
   data[3] = "Mumbai";

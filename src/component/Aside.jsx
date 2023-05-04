@@ -74,7 +74,7 @@ const Aside = () => {
         "SHPL - RAJLAXMI LOGISTICS PARK- SIEMENS HEALTHCARE PVT LTD",
       ],
       orderDate: {
-        from: 1677500670000,
+        from: 1680287400000,
       },
     },
     limit: 5000,
@@ -83,9 +83,9 @@ const Aside = () => {
   const url2Data = {
     filters: {
       shipmentStatus: ["Planned", "Created", "Completed"],
-      customer: ["EPIROC"],
+      customer:["BHARAT FRITZ WERNER LIMITED"],
       shipmentDate: {
-        from: 1677500670000,
+        from: 1680287400000,
       },
     },
   };
@@ -93,7 +93,7 @@ const Aside = () => {
   const url3Data = {
     filters: {
       shipmentStatus: ["Planned", "Created"],
-      customer: ["EPIROC"],
+      customer:["BHARAT FRITZ WERNER LIMITED"],
     },
   };
 

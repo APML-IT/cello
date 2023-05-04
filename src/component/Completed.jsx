@@ -32,8 +32,8 @@ const Completed = () => {
   const url2Data = {
     filters: {
       shipmentStatus: ["Completed"],
-      // customer: ["EPIROC"],
-      customer: ["EPIROC"],
+      // customer:["BHARAT FRITZ WERNER LIMITED"],
+      customer:["BHARAT FRITZ WERNER LIMITED"],
       shipmentDate: {
         from: 1680287400000,
       },
@@ -327,7 +327,7 @@ const Completed = () => {
                 <thead>
                 <tr>
                     <th className="table-th">Shipment Number </th>
-                    <th className="table-th">Job Number </th>
+                    
                     <th className="table-th">GC Number </th>
                     <th className="table-th">Stages</th>
                     <th className="table-th">Vehicle No. </th>
@@ -339,7 +339,6 @@ const Completed = () => {
                     <th className="table-th">abnormalities</th>
                     <th className="table-th">CONSIGNOR</th>
                     <th className="table-th">CONSIGNEE</th>
-                    <th className="table-th">Order by EDD </th>
                     <th className="table-th">Actual Arrival </th>
                     <th className="table-th">at vs gt </th>
                     <th className="table-th">gt vs dt </th>
@@ -365,13 +364,7 @@ const Completed = () => {
                         <td className="td-main">
                           {res.shipment.shipmentNumber}
                         </td>
-                        <td className="td-main">
-                          {res.order.customFields
-                            .filter((res) => res.fieldKey === "job no")
-                            .map((res) => {
-                              return <td className="td-main">{res.value}</td>;
-                            })}
-                        </td>
+                       
                         <td
                           className="td-main"
                           style={{ paddingRight: "12rem" }}
@@ -460,15 +453,6 @@ const Completed = () => {
                             return <>{res.value ? res.value : "--"}</>;
                           })}
 
-                        </td>
-
-                       
-                        <td className="td-main">
-                          {res.order.customFields
-                            .filter((res) => res.fieldKey === "orderby")
-                            .map((res) => {
-                              return <>{res.value}</>;
-                            })}
                         </td>
                         <td className="td-main">
                           {" "}

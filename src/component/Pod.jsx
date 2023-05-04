@@ -22,7 +22,7 @@ const Pod = () => {
     filters: {
      customer:["BHARAT FRITZ WERNER LIMITED"],
       orderDate: {
-        from: 1677500670000,
+        from: 1680287400000,
       },
     },
     limit: 5000,
@@ -31,9 +31,9 @@ const Pod = () => {
   const url2Data = {
     filters: {
       shipmentStatus: ["Completed"],
-      customer: ["EPIROC"],
+      customer:["BHARAT FRITZ WERNER LIMITED"],
       shipmentDate: {
-        from: 1677500670000,
+        from: 1680287400000,
       },
     },
   };

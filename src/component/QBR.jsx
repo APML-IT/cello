@@ -17,7 +17,7 @@ const QBR = () => {
     filters: {
      customer:["BHARAT FRITZ WERNER LIMITED"],
       orderDate: {
-        from: 1677500670000,
+        from: 1680287400000,
       },
     },
     limit: 5000,
@@ -26,7 +26,7 @@ const QBR = () => {
   const url2Data = {
     filters: {
       shipmentStatus: ["Planned", "Created"],
-      customer: ["EPIROC"],
+      customer:["BHARAT FRITZ WERNER LIMITED"],
     },
   };
 
@@ -62,7 +62,7 @@ const QBR = () => {
                   <th className="table-th">shipment Number </th>
                   <th className="table-th">GC number </th>
                   <th className="table-th">So numbber/ </th>
-                  <th className="table-th">order by </th>
+                  
                   <th className="table-th">po name </th>
                   <th className="table-th">po date </th>
                   <th className="table-th">form</th>

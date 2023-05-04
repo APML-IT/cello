@@ -19,7 +19,7 @@ const MBR = () => {
     filters: {
      customer:["BHARAT FRITZ WERNER LIMITED"],
       orderDate: {
-        from: 1677500670000,
+        from: 1680287400000,
       },
     },
     limit: 5000,
@@ -28,7 +28,7 @@ const MBR = () => {
   const url2Data = {
     filters: {
       shipmentStatus: ["Planned", "Created"],
-      customer: ["EPIROC"],
+      customer:["BHARAT FRITZ WERNER LIMITED"],
     },
   };
 

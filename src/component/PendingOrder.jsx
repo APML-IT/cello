@@ -40,7 +40,8 @@ const PendingOrder = () => {
   const url2Data = {
     filters: {
       shipmentStatus: ["Planned", "Created"],
-      customer: ["EPIROC"],
+      // customer:["BHARAT FRITZ WERNER LIMITED"],
+      customer: ["BHARAT FRITZ WERNER LIMITED"],
       shipmentDate: {
         from: 1680287400000,
       },
@@ -153,13 +154,11 @@ const PendingOrder = () => {
               <thead>
               <tr>
                   <th className="table-th">order number </th>
-                  <th className="table-th">Job Number </th>
                   <th className="table-th">Consignor</th>
                   <th className="table-th">Consignee</th>
                   <th className="table-th">material</th>
                   <th className="table-th">Vehicle Type </th>
                   <th className="table-th">expected Pickup Date </th>
-                  <th className="table-th">Order By </th>
                   <th className="table-th">Order Days </th>
                   {/* <th className="table-th">SHPL instructions </th> */}
                   <th className="table-th">Special Instruction </th>
@@ -169,16 +168,11 @@ const PendingOrder = () => {
 
               <tbody>
                 {pendingStatus.map((res) => {
+                  console.log(pendingStatus,"pd")
                   return (
                     <tr className="tr">
                     <td className="td-main">{res.orderNumber}</td>
-                    <td className="td-main">
-                          {res.customFields
-                            .filter((res) => res.fieldKey === "job no")
-                            .map((res) => {
-                              return <td className="td-main">{res.value}</td>;
-                            })}
-                        </td>
+                 
                     <td className="td-main">
                       {res?.lineItems[0].consigner?.name}
                               {/* dfd */}
@@ -230,19 +224,12 @@ const PendingOrder = () => {
                           return <>{differentdate(res.value)}</>;
                         })}
                     </td>
-                    <td className="td-main">
-                      {" "}
-                      {res.customFields
-                        .filter((res) => res.fieldKey === "orderby")
-                        .map((res) => {
-                          return <>{res.value}</>;
-                        })}
-                    </td>
+                  
                     <td
                       className="td-main"
                       style={{ color: "lightcoral", fontWeight: "bold" }}
                     >
---
+                        {differentdate(res.orderDate) }
                     </td>
                     {/* <td className="td-main" style={{ color: "red" }}>
                       {" "}
