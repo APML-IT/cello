@@ -29,7 +29,7 @@ const PendingOrder = () => {
 
   const url1Data = {
     filters: {
-     customer:["BHARAT FRITZ WERNER LIMITED"],
+      customer: ["CELLO INDUSTRIES PRIVATE LIMITED"],
       orderDate: {
         from: 1680287400000,
       },
@@ -40,8 +40,8 @@ const PendingOrder = () => {
   const url2Data = {
     filters: {
       shipmentStatus: ["Planned", "Created"],
-      // customer:["BHARAT FRITZ WERNER LIMITED"],
-      customer: ["BHARAT FRITZ WERNER LIMITED"],
+      //customer: ["CELLO INDUSTRIES PRIVATE LIMITED"],
+      customer: ["CELLO INDUSTRIES PRIVATE LIMITED"],
       shipmentDate: {
         from: 1680287400000,
       },
@@ -69,8 +69,7 @@ const PendingOrder = () => {
     });
   }
 
-  console.log(pendingStatus)
-
+  console.log(pendingStatus);
 
   function differentdate(a) {
     let date = new Date(a);
@@ -152,7 +151,7 @@ const PendingOrder = () => {
           <>
             <table className="main-table" id="excel_table">
               <thead>
-              <tr>
+                <tr>
                   <th className="table-th">order number </th>
                   <th className="table-th">Consignor</th>
                   <th className="table-th">Consignee</th>
@@ -168,70 +167,70 @@ const PendingOrder = () => {
 
               <tbody>
                 {pendingStatus.map((res) => {
-                  console.log(pendingStatus,"pd")
+                  console.log(pendingStatus, "pd");
                   return (
                     <tr className="tr">
-                    <td className="td-main">{res.orderNumber}</td>
-                 
-                    <td className="td-main">
-                      {res?.lineItems[0].consigner?.name}
-                              {/* dfd */}
-                    </td>
-                    <td
-                      className="td-main"
-                      style={{ color: "rgb(16, 177, 231)" }}
-                    >
-                       {res.customFields
-                        .filter((res) => res.fieldKey === "destination")
-                        .map((res) => {
-                          return <>{res.value}</>;
-                        })}
-                    </td>
-                    <td className="td-main">
-                      {res.customFields
-                        .filter((res) => res.fieldKey === "Material")
-                        .map((res) => {
-                          return <>{res.value}</>;
-                        })}
-                    </td>
-                    <td className="td-main">
-                      {" "}
-                      {res.lineItems[0].allowedLoadTypes[0]?.name ? res.lineItems[0].allowedLoadTypes[0]?.name:"--"}
-                      
-                    </td>
-                    <td
-                      className="td-main"
-                      style={{
-                        fontWeight: "bolder",
-                        color:
-                          differentdate(res.value) > 86400000
-                            ? "#00ff00"
-                            : differentdate(res.value) > 21600000 &&
-                              differentdate(res.value) < 86400000
-                            ? "yellow"
-                            : differentdate(res.value) > 0 &&
-                              differentdate(res.value) < 21600000
-                            ? "orange"
-                            : "red",
-                      }}
-                    >
-                      {res.customFields
-                        .filter(
-                          (res) =>
-                            res.fieldKey === "expected pickup date"
-                        )
-                        .map((res) => {
-                          return <>{differentdate(res.value)}</>;
-                        })}
-                    </td>
-                  
-                    <td
-                      className="td-main"
-                      style={{ color: "lightcoral", fontWeight: "bold" }}
-                    >
-                        {differentdate(res.orderDate) }
-                    </td>
-                    {/* <td className="td-main" style={{ color: "red" }}>
+                      <td className="td-main">{res.orderNumber}</td>
+
+                      <td className="td-main">
+                        {res?.lineItems[0].consigner?.name}
+                        {/* dfd */}
+                      </td>
+                      <td
+                        className="td-main"
+                        style={{ color: "rgb(16, 177, 231)" }}
+                      >
+                        {res.customFields
+                          .filter((res) => res.fieldKey === "destination")
+                          .map((res) => {
+                            return <>{res.value}</>;
+                          })}
+                      </td>
+                      <td className="td-main">
+                        {res.customFields
+                          .filter((res) => res.fieldKey === "Material")
+                          .map((res) => {
+                            return <>{res.value}</>;
+                          })}
+                      </td>
+                      <td className="td-main">
+                        {" "}
+                        {res.lineItems[0].allowedLoadTypes[0]?.name
+                          ? res.lineItems[0].allowedLoadTypes[0]?.name
+                          : "--"}
+                      </td>
+                      <td
+                        className="td-main"
+                        style={{
+                          fontWeight: "bolder",
+                          color:
+                            differentdate(res.value) > 86400000
+                              ? "#00ff00"
+                              : differentdate(res.value) > 21600000 &&
+                                differentdate(res.value) < 86400000
+                              ? "yellow"
+                              : differentdate(res.value) > 0 &&
+                                differentdate(res.value) < 21600000
+                              ? "orange"
+                              : "red",
+                        }}
+                      >
+                        {res.customFields
+                          .filter(
+                            (res) => res.fieldKey === "expected pickup date"
+                          )
+                          .map((res) => {
+                            return <>{differentdate(res.value)}</>;
+                          })}
+                      </td>
+
+                      <td
+                        className="td-main"
+                        style={{ color: "lightcoral", fontWeight: "bold" }}
+                      >
+                        {differentdate(res.orderDate)}
+                      </td>
+                      {/* <td className="td-main" style={{ color: "red" }}>
                       {" "}
                       {res.customFields
                         .filter((res) => res.fieldKey === "SHPL instructions")
@@ -239,25 +238,30 @@ const PendingOrder = () => {
                           return <>{res.value}</>;
                         })}
                     </td> */}
-                    <td className="td-main">
-                      {" "}
-                      {res.customFields
-                        .filter((res) => res.fieldKey === "SpecialInstruction")
-                        .map((res) => {
-                          return <>{res.value ? res.value : "no remark"}</>;
-                        })}
-                    </td>
-                    <td className="td-main" style={{color:"#00ff00", fontWeight:"bold"}}>
-                      {" "}
-                      {res.customFields
-                        .filter(
-                          (res) => res.fieldKey === "expected delivery date"
-                        )
-                        .map((res) => {
-                          return <>{differentdate( res.value) }</>;
-                        })}
-                    </td>
-                  </tr>
+                      <td className="td-main">
+                        {" "}
+                        {res.customFields
+                          .filter(
+                            (res) => res.fieldKey === "SpecialInstruction"
+                          )
+                          .map((res) => {
+                            return <>{res.value ? res.value : "no remark"}</>;
+                          })}
+                      </td>
+                      <td
+                        className="td-main"
+                        style={{ color: "#00ff00", fontWeight: "bold" }}
+                      >
+                        {" "}
+                        {res.customFields
+                          .filter(
+                            (res) => res.fieldKey === "expected delivery date"
+                          )
+                          .map((res) => {
+                            return <>{differentdate(res.value)}</>;
+                          })}
+                      </td>
+                    </tr>
                   );
                 })}
               </tbody>

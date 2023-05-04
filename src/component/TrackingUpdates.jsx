@@ -23,7 +23,7 @@ const TrackingUpdates = () => {
   var param1 = {
     filters: {
       shipmentStatus: ["Planned", "Created"],
-      customer:["BHARAT FRITZ WERNER LIMITED"],
+      customer: ["CELLO INDUSTRIES PRIVATE LIMITED"],
       // "origin": ["Navi Mumbai","Mumbai","Bhiwandi","Hyderabad","Bangalore","Chennai"],
       shipmentDate: {
         from: 1680287400000,
@@ -33,7 +33,7 @@ const TrackingUpdates = () => {
 
   var data1 = {
     filters: {
-     customer:["BHARAT FRITZ WERNER LIMITED"],
+      customer: ["CELLO INDUSTRIES PRIVATE LIMITED"],
       orderDate: {
         from: 1680287400000,
       },
@@ -44,7 +44,7 @@ const TrackingUpdates = () => {
   var param2 = {
     filters: {
       shipmentStatus: ["Completed"],
-      customer:["BHARAT FRITZ WERNER LIMITED"],
+      customer: ["CELLO INDUSTRIES PRIVATE LIMITED"],
       // "origin": ["Navi Mumbai","Mumbai","Bhiwandi","Hyderabad","Bangalore","Chennai"],
       shipmentDate: {
         from: 1680287400000,
@@ -54,7 +54,7 @@ const TrackingUpdates = () => {
 
   var data2 = {
     filters: {
-     customer:["BHARAT FRITZ WERNER LIMITED"],
+      customer: ["CELLO INDUSTRIES PRIVATE LIMITED"],
       orderDate: {
         from: 1680287400000,
       },
@@ -169,11 +169,13 @@ const TrackingUpdates = () => {
           <Loader />
         ) : (
           <>
-            <h1 style={{ color: "black", fontWeight: "500" }}>PENDING &nbsp;{pendingShipmentX.length} </h1>
+            <h1 style={{ color: "black", fontWeight: "500" }}>
+              PENDING &nbsp;{pendingShipmentX.length}{" "}
+            </h1>
             <div className="two-tables">
               <table className="first-table">
                 <thead>
-                <tr>
+                  <tr>
                     <th className="table-th-short">gc Number </th>
                     <th className="table-th-short">consigner</th>
                     <th className="table-th-short">consignee</th>
@@ -183,41 +185,38 @@ const TrackingUpdates = () => {
                   </tr>
                 </thead>
                 <tbody>
-                {
-                    pendingShipmentX.map((res) => {
-                      return (
-                        <tr>
-                          <td className="table-td-short">{res.consignments[0].consignmentNo}</td>
-                          <td className="table-td-short">{res.consignments[0].consigner.name}
-                          </td>
-                          <td className="table-td-short">
+                  {pendingShipmentX.map((res) => {
+                    return (
+                      <tr>
+                        <td className="table-td-short">
+                          {res.consignments[0].consignmentNo}
+                        </td>
+                        <td className="table-td-short">
+                          {res.consignments[0].consigner.name}
+                        </td>
+                        <td className="table-td-short">
                           {res.customFields
-                          .filter((res) => res.fieldKey === "destination")
-                          .map((res) => {
-                            return <>{res.value}</>;
-                          })}
-                          </td>
-                          <td className="table-td-short">{res.issues && res.issues[0].issueType}</td>
-                          <td className="table-td-short">
-                          {
-                          differentdate(res.shipment.creationTime) 
-                        }
-                          </td>
-                          <td className="table-td-short">{
-                            res.issues[0].customFields
-                              .filter((res) => res.fieldKey === "Remarks : ")
-                              .map((res) => {
-                                return (
-                                  <>
-                                    {res.value}
-                                  </>
-                                );
-                              })}</td>
-                        </tr>
-                      )
-                    })
-                  }
-
+                            .filter((res) => res.fieldKey === "destination")
+                            .map((res) => {
+                              return <>{res.value}</>;
+                            })}
+                        </td>
+                        <td className="table-td-short">
+                          {res.issues && res.issues[0].issueType}
+                        </td>
+                        <td className="table-td-short">
+                          {differentdate(res.shipment.creationTime)}
+                        </td>
+                        <td className="table-td-short">
+                          {res.issues[0].customFields
+                            .filter((res) => res.fieldKey === "Remarks : ")
+                            .map((res) => {
+                              return <>{res.value}</>;
+                            })}
+                        </td>
+                      </tr>
+                    );
+                  })}
                 </tbody>
               </table>
 
@@ -230,7 +229,7 @@ const TrackingUpdates = () => {
 
                 <table className="second-table">
                   <thead>
-                  <tr>
+                    <tr>
                       <th className="table-th-short">gc Number </th>
                       <th className="table-th-short">consigner</th>
                       <th className="table-th-short">consignee</th>
@@ -240,41 +239,38 @@ const TrackingUpdates = () => {
                     </tr>
                   </thead>
                   <tbody>
-                  {
-                      completeShipmentX.map((res)=> {
-                        return(
-                          <tr>
-                          <td className="table-td-short">{res.consignments[0].consignmentNo}</td>
-                          <td className="table-td-short">{res.consignments[0].consigner.name}
+                    {completeShipmentX.map((res) => {
+                      return (
+                        <tr>
+                          <td className="table-td-short">
+                            {res.consignments[0].consignmentNo}
                           </td>
                           <td className="table-td-short">
-                          {res.customFields
-                          .filter((res) => res.fieldKey === "destination")
-                          .map((res) => {
-                            return <>{res.value}</>;
-                          })}
+                            {res.consignments[0].consigner.name}
                           </td>
-                          <td className="table-td-short">{res.issues && res.issues[0].issueType}</td>
                           <td className="table-td-short">
-                          {
-                          differentdate(res.shipment.creationTime) 
-                        }
+                            {res.customFields
+                              .filter((res) => res.fieldKey === "destination")
+                              .map((res) => {
+                                return <>{res.value}</>;
+                              })}
                           </td>
-                          <td className="table-td-short">{
-                            res.issues[0].customFields
+                          <td className="table-td-short">
+                            {res.issues && res.issues[0].issueType}
+                          </td>
+                          <td className="table-td-short">
+                            {differentdate(res.shipment.creationTime)}
+                          </td>
+                          <td className="table-td-short">
+                            {res.issues[0].customFields
                               .filter((res) => res.fieldKey === "Remarks : ")
                               .map((res) => {
-                                return (
-                                  <>
-                                    {res.value}
-                                  </>
-                                );
-                              })}</td>
+                                return <>{res.value}</>;
+                              })}
+                          </td>
                         </tr>
-                        )
-                      })
-                    }
-                   
+                      );
+                    })}
                   </tbody>
                 </table>
               </div>

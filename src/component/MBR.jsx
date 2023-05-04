@@ -17,7 +17,7 @@ const MBR = () => {
 
   const url1Data = {
     filters: {
-     customer:["BHARAT FRITZ WERNER LIMITED"],
+      customer: ["CELLO INDUSTRIES PRIVATE LIMITED"],
       orderDate: {
         from: 1680287400000,
       },
@@ -28,7 +28,7 @@ const MBR = () => {
   const url2Data = {
     filters: {
       shipmentStatus: ["Planned", "Created"],
-      customer:["BHARAT FRITZ WERNER LIMITED"],
+      customer: ["CELLO INDUSTRIES PRIVATE LIMITED"],
     },
   };
 

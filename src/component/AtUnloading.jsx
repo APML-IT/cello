@@ -19,7 +19,7 @@ const AtUnloading = () => {
 
   const url1Data = {
     filters: {
-     customer:["BHARAT FRITZ WERNER LIMITED"],
+      customer: ["CELLO INDUSTRIES PRIVATE LIMITED"],
       orderDate: {
         from: 1680287400000,
       },
@@ -30,8 +30,8 @@ const AtUnloading = () => {
   const url2Data = {
     filters: {
       shipmentStatus: ["Planned", "Created"],
-      // customer:["BHARAT FRITZ WERNER LIMITED"],
-      customer:["BHARAT FRITZ WERNER LIMITED"],
+      //customer: ["CELLO INDUSTRIES PRIVATE LIMITED"],
+      customer: ["CELLO INDUSTRIES PRIVATE LIMITED"],
       shipmentDate: {
         from: 1680287400000,
       },
@@ -205,9 +205,9 @@ const AtUnloading = () => {
             {" "}
             <table className="main-table" id="excel_table">
               <thead>
-              <tr>
+                <tr>
                   <th className="table-th">order number </th>
-                  
+
                   <th className="table-th">Vehicle No. </th>
                   <th className="table-th">Consignor</th>
                   <th className="table-th">Consignee</th>
@@ -227,210 +227,217 @@ const AtUnloading = () => {
                 {combo.map((res) => {
                   return (
                     <tr>
-                    <td className="td-main">{res.order.orderNumber}</td>
-                   
-                    <td className="td-main">
-                      {" "}
-                      {
-                        res.shipment.fleetInfo.vehicle
-                          .vehicleRegistrationNumber
-                      }
-                    </td>
-                    <td className="td-main">
-                      {" "}
-                      {res.order.lineItems[0].consigner.name}
-                    </td>
-                    <td
-                      className="td-main"
-                      style={{
-                        fontWeight: "bolder",
-                        color: "rgb(16, 177, 231)",
-                      }}
-                    >
-                      {res.order.customFields
-                        .filter((res) => res.fieldKey === "destination")
-                        .map((res) => {
-                          return <>{res ? res.value : "--"}</>;
-                        })}
-                    </td>
-                    <td className="td-main">
-                    {res.order.lineItems[0].allowedLoadTypes[0]?.name}
+                      <td className="td-main">{res.order.orderNumber}</td>
 
-                    </td>
-                    <td className="td-main">
-                    {
-                        differentdate(res.shipment.creationTime) 
-                      }
-                    </td>
-                    <td className="td-main"  style={{
-                        fontWeight: "bolder",
-                        color:
-                          differentdate(res.value) > 86400000
-                            ? "#00ff00"
-                            : differentdate(res.value) > 21600000 &&
-                              differentdate(res.value) < 86400000
-                            ? "yellow"
-                            : differentdate(res.value) > 0 &&
-                              differentdate(res.value) < 21600000
-                            ? "orange"
-                            : "red",
-                      }}>
-                      {res.order.customFields
-                        .filter(
-                          (res) =>
-                            res.fieldKey === "expected pickup date"
-                        )
-                        .map((res) => {
-                          return <>{differentdate(res.value) }</>;
-                        })}
-                    </td>
-                    <td className="td-main">
-                      {res.order.customFields
-                        .filter((res) => res.fieldKey === "SpecialInstruction")
-                        .map((res) => {
-                          return <>{res.value ? res.value : "--"}</>;
-                        })}
-                    </td>
-                    <td className="td-main">
-                      <button
-                        className="color-button"
+                      <td className="td-main">
+                        {" "}
+                        {
+                          res.shipment.fleetInfo.vehicle
+                            .vehicleRegistrationNumber
+                        }
+                      </td>
+                      <td className="td-main">
+                        {" "}
+                        {res.order.lineItems[0].consigner.name}
+                      </td>
+                      <td
+                        className="td-main"
                         style={{
-                          backgroundColor: status_color(
+                          fontWeight: "bolder",
+                          color: "rgb(16, 177, 231)",
+                        }}
+                      >
+                        {res.order.customFields
+                          .filter((res) => res.fieldKey === "destination")
+                          .map((res) => {
+                            return <>{res ? res.value : "--"}</>;
+                          })}
+                      </td>
+                      <td className="td-main">
+                        {res.order.lineItems[0].allowedLoadTypes[0]?.name}
+                      </td>
+                      <td className="td-main">
+                        {differentdate(res.shipment.creationTime)}
+                      </td>
+                      <td
+                        className="td-main"
+                        style={{
+                          fontWeight: "bolder",
+                          color:
+                            differentdate(res.value) > 86400000
+                              ? "#00ff00"
+                              : differentdate(res.value) > 21600000 &&
+                                differentdate(res.value) < 86400000
+                              ? "yellow"
+                              : differentdate(res.value) > 0 &&
+                                differentdate(res.value) < 21600000
+                              ? "orange"
+                              : "red",
+                        }}
+                      >
+                        {res.order.customFields
+                          .filter(
+                            (res) => res.fieldKey === "expected pickup date"
+                          )
+                          .map((res) => {
+                            return <>{differentdate(res.value)}</>;
+                          })}
+                      </td>
+                      <td className="td-main">
+                        {res.order.customFields
+                          .filter(
+                            (res) => res.fieldKey === "SpecialInstruction"
+                          )
+                          .map((res) => {
+                            return <>{res.value ? res.value : "--"}</>;
+                          })}
+                      </td>
+                      <td className="td-main">
+                        <button
+                          className="color-button"
+                          style={{
+                            backgroundColor: status_color(
+                              res.shipment.shipmentStages[1].arrivalTime
+                            )
+                              ? "green"
+                              : "red",
+                          }}
+                        >
+                          .
+                        </button>
+                        <button
+                          className="color-button"
+                          style={{
+                            backgroundColor: status_color(
+                              res.shipment.shipmentStages[1].gateInTime
+                            )
+                              ? "green"
+                              : "red",
+                          }}
+                        >
+                          .
+                        </button>
+                        <button
+                          className="color-button"
+                          style={{
+                            backgroundColor: status_color(
+                              res.shipment.shipmentStages[1]
+                                .actualActivityStartTime
+                            )
+                              ? "green"
+                              : "red",
+                          }}
+                        >
+                          .
+                        </button>
+                        <button
+                          className="color-button "
+                          style={{
+                            backgroundColor: status_color(
+                              res.shipment.shipmentStages[1]
+                                .actualActivityStartTime
+                            )
+                              ? "green"
+                              : "red",
+                          }}
+                        >
+                          .
+                        </button>
+                      </td>
+                      <td
+                        className="td-main"
+                        style={{
+                          fontWeight: "bolder",
+                          color: atvsnow(
                             res.shipment.shipmentStages[1].arrivalTime
                           )
-                            ? "green"
+                            ? "#00ff00"
                             : "red",
                         }}
                       >
-                        .
-                      </button>
-                      <button
-                        className="color-button"
+                        {" "}
+                        {atvsnow(res.shipment.shipmentStages[1].arrivalTime)}
+                      </td>
+                      <td
+                        className="td-main"
                         style={{
-                          backgroundColor: status_color(
-                            res.shipment.shipmentStages[1].gateInTime
-                          )
-                            ? "green"
-                            : "red",
-                        }}
-                      >
-                        .
-                      </button>
-                      <button
-                        className="color-button"
-                        style={{
-                          backgroundColor: status_color(
-                            res.shipment.shipmentStages[1]
-                              .actualActivityStartTime
-                          )
-                            ? "green"
-                            : "red",
-                        }}
-                      >
-                        .
-                      </button>
-                      <button
-                        className="color-button "
-                        style={{
-                          backgroundColor: status_color(
-                            res.shipment.shipmentStages[1]
-                              .actualActivityStartTime
-                          )
-                            ? "green"
-                            : "red",
-                        }}
-                      >
-                        .
-                      </button>
-                    </td>
-                    <td
-                      className="td-main"
-                      style={{
-                        fontWeight: "bolder",
-                        color: atvsnow(
-                          res.shipment.shipmentStages[1].arrivalTime
-                        )
-                          ? "#00ff00"
-                          : "red",
-                      }}
-                    >
-                      {" "}
-                      {atvsnow(res.shipment.shipmentStages[1].arrivalTime)}
-                    </td>
-                    <td className="td-main"
-                     style={{
-                      fontWeight: "bold",
-                      color:
-                        subtractDates1(
-                          res.shipment.shipmentStages[0].gateInTime,
-                          res.shipment.shipmentStages[0].arrivalTime
-                        ) > "-1 days 0 hours 0 minutes"
-                          ? "#00ff00"
-                          : subtractDates1(
+                          fontWeight: "bold",
+                          color:
+                            subtractDates1(
                               res.shipment.shipmentStages[0].gateInTime,
                               res.shipment.shipmentStages[0].arrivalTime
-                            ) <= '-1 days 0 hours 0 minutes'
-                          ? "red"
-                          : "",
-                    }}>
-                      {" "}
-                      {subtractDates1(
-                        res.shipment.shipmentStages[1].gateInTime,
-                        res.shipment.shipmentStages[1].arrivalTime
-                      )}
-                    </td>
-                    <td className="td-main"
-                    style={{
-                      fontWeight: "bold",
-                      color:
-                        subtractDates1(
-                          res.shipment.shipmentStages[0]
-                            .actualActivityStartTime,
-                          res.shipment.shipmentStages[0].gateInTime
-                        ) > "-1 days 0 hours 0 minutes"
-                        ? "#00ff00"
-                          : subtractDates1(
+                            ) > "-1 days 0 hours 0 minutes"
+                              ? "#00ff00"
+                              : subtractDates1(
+                                  res.shipment.shipmentStages[0].gateInTime,
+                                  res.shipment.shipmentStages[0].arrivalTime
+                                ) <= "-1 days 0 hours 0 minutes"
+                              ? "red"
+                              : "",
+                        }}
+                      >
+                        {" "}
+                        {subtractDates1(
+                          res.shipment.shipmentStages[1].gateInTime,
+                          res.shipment.shipmentStages[1].arrivalTime
+                        )}
+                      </td>
+                      <td
+                        className="td-main"
+                        style={{
+                          fontWeight: "bold",
+                          color:
+                            subtractDates1(
                               res.shipment.shipmentStages[0]
                                 .actualActivityStartTime,
                               res.shipment.shipmentStages[0].gateInTime
-                            )  <= '-1 days 0 hours 0 minutes'
-                            ? "red"
-                            : "",
-                    }}>
-                      {" "}
-                      {subtractDates1(
-                        res.shipment.shipmentStages[1]
-                          .actualActivityStartTime,
-                        res.shipment.shipmentStages[1].gateInTime
-                      ) }
-                    </td>
-                    <td className="td-main"
-                     style={{
-                      fontWeight: "bold",
-                      color:
-                        subtractDates1(
-                          res.shipment.shipmentStages[0]
-                            .actualActivityEndTime,
-                          res.shipment.shipmentStages[0]
-                            .actualActivityStartTime
-                        ) > "-1 days 0 hours 0 minutes"
-                        ? "#00ff00"
-                          : subtractDates1(
+                            ) > "-1 days 0 hours 0 minutes"
+                              ? "#00ff00"
+                              : subtractDates1(
+                                  res.shipment.shipmentStages[0]
+                                    .actualActivityStartTime,
+                                  res.shipment.shipmentStages[0].gateInTime
+                                ) <= "-1 days 0 hours 0 minutes"
+                              ? "red"
+                              : "",
+                        }}
+                      >
+                        {" "}
+                        {subtractDates1(
+                          res.shipment.shipmentStages[1]
+                            .actualActivityStartTime,
+                          res.shipment.shipmentStages[1].gateInTime
+                        )}
+                      </td>
+                      <td
+                        className="td-main"
+                        style={{
+                          fontWeight: "bold",
+                          color:
+                            subtractDates1(
                               res.shipment.shipmentStages[0]
                                 .actualActivityEndTime,
                               res.shipment.shipmentStages[0]
                                 .actualActivityStartTime
-                            ) <= '-1 days 0 hours 0 minutes'
-                            ? "red"
-                            : "",
-                    }}>
-                      {" "}
-                      {subtractDates1(
-                        res.shipment.shipmentStages[1].actualActivityEndTime,
-                        res.shipment.shipmentStages[1].actualActivityStartTime
-                      ) }
-                    </td>
-                  </tr>
+                            ) > "-1 days 0 hours 0 minutes"
+                              ? "#00ff00"
+                              : subtractDates1(
+                                  res.shipment.shipmentStages[0]
+                                    .actualActivityEndTime,
+                                  res.shipment.shipmentStages[0]
+                                    .actualActivityStartTime
+                                ) <= "-1 days 0 hours 0 minutes"
+                              ? "red"
+                              : "",
+                        }}
+                      >
+                        {" "}
+                        {subtractDates1(
+                          res.shipment.shipmentStages[1].actualActivityEndTime,
+                          res.shipment.shipmentStages[1].actualActivityStartTime
+                        )}
+                      </td>
+                    </tr>
                   );
                 })}
               </tbody>

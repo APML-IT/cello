@@ -15,7 +15,7 @@ const QBR = () => {
 
   const url1Data = {
     filters: {
-     customer:["BHARAT FRITZ WERNER LIMITED"],
+      customer: ["CELLO INDUSTRIES PRIVATE LIMITED"],
       orderDate: {
         from: 1680287400000,
       },
@@ -26,7 +26,7 @@ const QBR = () => {
   const url2Data = {
     filters: {
       shipmentStatus: ["Planned", "Created"],
-      customer:["BHARAT FRITZ WERNER LIMITED"],
+      customer: ["CELLO INDUSTRIES PRIVATE LIMITED"],
     },
   };
 
@@ -62,7 +62,7 @@ const QBR = () => {
                   <th className="table-th">shipment Number </th>
                   <th className="table-th">GC number </th>
                   <th className="table-th">So numbber/ </th>
-                  
+
                   <th className="table-th">po name </th>
                   <th className="table-th">po date </th>
                   <th className="table-th">form</th>

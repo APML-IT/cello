@@ -20,7 +20,7 @@ const Pod = () => {
 
   const url1Data = {
     filters: {
-     customer:["BHARAT FRITZ WERNER LIMITED"],
+      customer: ["CELLO INDUSTRIES PRIVATE LIMITED"],
       orderDate: {
         from: 1680287400000,
       },
@@ -31,7 +31,7 @@ const Pod = () => {
   const url2Data = {
     filters: {
       shipmentStatus: ["Completed"],
-      customer:["BHARAT FRITZ WERNER LIMITED"],
+      customer: ["CELLO INDUSTRIES PRIVATE LIMITED"],
       shipmentDate: {
         from: 1680287400000,
       },
@@ -107,7 +107,7 @@ const Pod = () => {
             </button>
           </div>
         </div>
-        <div className="main_table-heading" style={{minWidth:"100%"}}>
+        <div className="main_table-heading" style={{ minWidth: "100%" }}>
           <div className="heading">
             <VscVmRunning
               className="heading-icon"
@@ -146,12 +146,14 @@ const Pod = () => {
                     <tr>
                       <td className="td-main">{res.shipmentNumber}</td>
                       <td className="td-main">
-                        {res.consignments[0].pod?.status ? res.consignments[0].pod?.status :"--"}
+                        {res.consignments[0].pod?.status
+                          ? res.consignments[0].pod?.status
+                          : "--"}
                       </td>
                       <td className="td-main">
                         {todaysdate(res.shipmentStages[1].departureTime)}
                       </td>
-                      <td className="td-main" style={{lineHeight:"2rem"}}>
+                      <td className="td-main" style={{ lineHeight: "2rem" }}>
                         <span>
                           {res.consignments[0]?.pod &&
                           res.consignments[0]?.pod?.documents ? (
@@ -170,7 +172,7 @@ const Pod = () => {
                             "wating"
                           )}
                         </span>
-                            <br/>
+                        <br />
                         <span>
                           {res.consignments[0]?.pod &&
                           res.consignments[0]?.pod?.documents ? (
@@ -197,7 +199,6 @@ const Pod = () => {
             </table>
           </>
         )}
-
       </main>
     </>
   );

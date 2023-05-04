@@ -31,7 +31,7 @@ export default function OrderForm() {
     const name = e.target.name;
     const value = e.target.value;
     setInputs((values) => ({ ...values, [name]: value }));
-    console.log(inputs,"inputs   inpu")
+    console.log(inputs, "inputs   inpu");
   };
 
   const handleSubmit = (e) => {
@@ -47,7 +47,7 @@ export default function OrderForm() {
       ...ccNumbers,
       [e.target.name]: e.target.value,
     });
-    console.log(ccNumbers,"ccnumber")
+    console.log(ccNumbers, "ccnumber");
   };
 
   const onMaterialChange = (e) => {
@@ -112,14 +112,14 @@ export default function OrderForm() {
                         setSelectedOrigin(e.target.value);
                         handleChanges(e);
                       }}
-                    > 
+                    >
                       <option value="">Select an option</option>
-                      <option value="BHARAT FRITZ WERNER LIMITED- Hosur">
-                      BHARAT FRITZ WERNER LIMITED- Hosur
+                      <option value="CELLO INDUSTRIES PRIVATE LIMITED-SOMNAT">
+                        CELLO INDUSTRIES PRIVATE LIMITED-SOMNAT
                       </option>
 
-                      <option value="BHARAT FRITZ WERNER LIMITED-Bangalore">
-                      BHARAT FRITZ WERNER LIMITED-Bangalore
+                      <option value="CELLO INDUSTRIES PRIVATE LIMITED-DAMAN">
+                        CELLO INDUSTRIES PRIVATE LIMITED-DAMAN
                       </option>
                       {/* <option value="Others">
                         Others
@@ -536,12 +536,8 @@ export default function OrderForm() {
                     />
                   </div>
 
-                  <div
-                  style={{marginTop:"2rem"}}
-                  >
-                    <div
-                      className="submit_button"
-                    >
+                  <div style={{ marginTop: "2rem" }}>
+                    <div className="submit_button">
                       <button
                         type="submit"
                         onChange={setSubmitted}
@@ -565,7 +561,7 @@ export default function OrderForm() {
                       required
                     >
                       <option value="">--Select--</option>
-                      <option value="CNS verticle machine">CNS verticle machine</option>
+                      <option value="Crockery">Crockery</option>
                     </select>
                   </div>
 
@@ -644,10 +640,8 @@ export default function OrderForm() {
                       />
                     </div>
                   )} */}
-                 
                 </div>
                 <div className="submit-class">
-                 
                   {submitted && (
                     <div style={{ minWidth: "100%", maxWidth: "100%" }}>
                       <div className="Tq_msg" style={{ position: "relative" }}>

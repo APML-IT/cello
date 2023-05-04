@@ -19,7 +19,7 @@ function Billing() {
 
   const url1Data = {
     filters: {
-     customer:["BHARAT FRITZ WERNER LIMITED"],
+      customer: ["CELLO INDUSTRIES PRIVATE LIMITED"],
       orderDate: {
         from: 1680287400000,
       },
@@ -30,8 +30,8 @@ function Billing() {
   const url2Data = {
     filters: {
       shipmentStatus: ["Completed"],
-      // customer:["BHARAT FRITZ WERNER LIMITED"],
-      customer:["BHARAT FRITZ WERNER LIMITED"],
+      //customer: ["CELLO INDUSTRIES PRIVATE LIMITED"],
+      customer: ["CELLO INDUSTRIES PRIVATE LIMITED"],
       shipmentDate: {
         from: 1680287400000,
       },
@@ -519,26 +519,26 @@ function Billing() {
   function sonumber(a) {
     var abc;
     for (let i = 0; i < a.length; i++) {
-      if (a[i]['fieldKey'] == "S.O Number/PO") {
-        abc = a[i]['value'];
-        break
+      if (a[i]["fieldKey"] == "S.O Number/PO") {
+        abc = a[i]["value"];
+        break;
       } else {
-        abc = '--'
+        abc = "--";
       }
     }
-    return abc
+    return abc;
   }
   function wbcost(a) {
     var abc;
     for (let i = 0; i < a.length; i++) {
-      if (a[i]['fieldKey'] == "WBS/COST") {
-        abc = a[i]['value'];
-        break
+      if (a[i]["fieldKey"] == "WBS/COST") {
+        abc = a[i]["value"];
+        break;
       } else {
-        abc = '--'
+        abc = "--";
       }
     }
-    return abc
+    return abc;
   }
 
   useEffect(() => {
@@ -583,11 +583,11 @@ function Billing() {
             {" "}
             <table className="main-table" id="excel_table">
               <thead>
-              <tr>
+                <tr>
                   <th className="table-th">GC number </th>
                   {/* <th className="table-th">S.O NUMBER/PO </th>
                   <th className="table-th">WBS/COST </th> */}
-                  
+
                   {/* <th className="table-th">po name </th>
                   <th className="table-th">po date </th> */}
                   {/* <th className="table-th">type of trip </th> */}
@@ -615,37 +615,33 @@ function Billing() {
                   <th className="table-th">Grand total </th>
                   <th className="table-th">remarks</th>
                   <th className="table-th" style={{ lineHeight: "1rem" }}>
-                      DOCUMENTS <span style={{ display: "block" }}>
-                        IN || DIS || EWAY || PAC.LIST
-                      </span>
-                    </th>
+                    DOCUMENTS{" "}
+                    <span style={{ display: "block" }}>
+                      IN || DIS || EWAY || PAC.LIST
+                    </span>
+                  </th>
                 </tr>
               </thead>
               <tbody>
-              {combo.map((res) => {
+                {combo.map((res) => {
                   return (
                     <tr>
                       <td className="td-main">
                         {res.shipment.consignments[0].consignmentNo}
                       </td>
-                     
-                     
-                     
-                    
+
                       <td className="td-main">
                         {" "}
-                        {
-                          res.shipment.consignments[0].consigner.name
-                        }
+                        {res.shipment.consignments[0].consigner.name}
                       </td>
                       <td className="td-main">
-                      {res.order.customFields
+                        {res.order.customFields
                           .filter((res) => res.fieldKey === "destination")
                           .map((res) => {
                             return <>{res.value}</>;
                           })}
                       </td>
-                      
+
                       <td className="td-main">
                         {res.order.customFields
                           .filter((res) => res.fieldKey === "Material")
@@ -749,9 +745,11 @@ function Billing() {
                               res.shipment.consignments[0].customFields
                             ) === "PENDING"
                               ? "red"
-                              :  status(
-                                res.shipment.consignments[0].customFields
-                              ) === "APPROVED" ?  "#00ff00" : "",
+                              : status(
+                                  res.shipment.consignments[0].customFields
+                                ) === "APPROVED"
+                              ? "#00ff00"
+                              : "",
                         }}
                       >
                         {status(res.shipment.consignments[0].customFields)}
@@ -790,46 +788,42 @@ function Billing() {
                           : "--"}
                       </td>
                       <td className="td-main">
-                            <button
-                              className="color-button"
-                              style={{
-                                backgroundColor:
-                                  invoice(res.order.customFields)
-                                    ?
-                                    "#00ff00" : "red"
-                              }}
-                            ></button>
+                        <button
+                          className="color-button"
+                          style={{
+                            backgroundColor: invoice(res.order.customFields)
+                              ? "#00ff00"
+                              : "red",
+                          }}
+                        ></button>
 
-                            <button
-                              className="color-button"
-                              style={{
-                                backgroundColor:
-                                  dis(res.order.customFields)
-                                    ?
-                                    "#00ff00" : "red"
-                              }}
-                            ></button>
+                        <button
+                          className="color-button"
+                          style={{
+                            backgroundColor: dis(res.order.customFields)
+                              ? "#00ff00"
+                              : "red",
+                          }}
+                        ></button>
 
-                            <button
-                              className="color-button"
-                              style={{
-                                backgroundColor:
-                                  eway(res.order.customFields)
-                                    ?
-                                    "#00ff00" : "red"
-                              }}
-                            ></button>
+                        <button
+                          className="color-button"
+                          style={{
+                            backgroundColor: eway(res.order.customFields)
+                              ? "#00ff00"
+                              : "red",
+                          }}
+                        ></button>
 
-                            <button
-                              className="color-button"
-                              style={{
-                                backgroundColor:
-                                  packinglist(res.order.customFields)
-                                    ?
-                                    "#00ff00" : "red"
-                              }}
-                            ></button>
-                          </td>
+                        <button
+                          className="color-button"
+                          style={{
+                            backgroundColor: packinglist(res.order.customFields)
+                              ? "#00ff00"
+                              : "red",
+                          }}
+                        ></button>
+                      </td>
                     </tr>
                   );
                 })}

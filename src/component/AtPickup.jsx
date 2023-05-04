@@ -19,7 +19,7 @@ const AtPickup = () => {
 
   const url1Data = {
     filters: {
-     customer:["BHARAT FRITZ WERNER LIMITED"],
+      customer: ["CELLO INDUSTRIES PRIVATE LIMITED"],
       orderDate: {
         from: 1680287400000,
       },
@@ -30,8 +30,8 @@ const AtPickup = () => {
   const url2Data = {
     filters: {
       shipmentStatus: ["Planned", "Created"],
-      // customer:["BHARAT FRITZ WERNER LIMITED"],
-      customer: ["BHARAT FRITZ WERNER LIMITED"],
+      //customer: ["CELLO INDUSTRIES PRIVATE LIMITED"],
+      customer: ["CELLO INDUSTRIES PRIVATE LIMITED"],
       shipmentDate: {
         from: 1680287400000,
       },
@@ -184,7 +184,7 @@ const AtPickup = () => {
   return (
     <>
       <main>
-      <div className="main_table-export">
+        <div className="main_table-export">
           <div className="export">
             <button onClick={exportExcelFile}>
               <h1> EXPORT</h1>
@@ -208,9 +208,9 @@ const AtPickup = () => {
           <>
             <table className="main-table" id="excel_table">
               <thead>
-              <tr>
+                <tr>
                   <th className="table-th">order number </th>
-                  
+
                   <th className="table-th">Vehicle No. </th>
                   <th className="table-th">Consignor</th>
                   <th className="table-th">Consignee</th>
@@ -231,7 +231,7 @@ const AtPickup = () => {
                   return (
                     <tr>
                       <td className="td-main">{res.order.orderNumber}</td>
-                     
+
                       <td className="td-main">
                         {
                           res.shipment.fleetInfo.vehicle
@@ -239,7 +239,7 @@ const AtPickup = () => {
                         }
                       </td>
                       <td className="td-main">
-                      {res.order.lineItems[0].consigner.name}
+                        {res.order.lineItems[0].consigner.name}
                       </td>
                       <td
                         className="td-main"
@@ -248,21 +248,21 @@ const AtPickup = () => {
                           fontWeight: "bold",
                         }}
                       >
-                         {res.order.customFields
+                        {res.order.customFields
                           .filter((res) => res.fieldKey === "destination")
                           .map((res) => {
                             return <>{res.value}</>;
                           })}
                       </td>
                       <td className="td-main">
-                      {res.order.lineItems[0].allowedLoadTypes[0]?.name}
+                        {res.order.lineItems[0].allowedLoadTypes[0]?.name}
                       </td>
                       <td className="td-main">
-                      {
-                          differentdate(res.shipment.creationTime) 
-                        }
+                        {differentdate(res.shipment.creationTime)}
                       </td>
-                      <td className="td-main"  style={{
+                      <td
+                        className="td-main"
+                        style={{
                           fontWeight: "bolder",
                           color:
                             differentdate(res.value) > 86400000
@@ -274,19 +274,21 @@ const AtPickup = () => {
                                 differentdate(res.value) < 21600000
                               ? "orange"
                               : "red",
-                        }}>
-                       {res.order.customFields
+                        }}
+                      >
+                        {res.order.customFields
                           .filter(
-                            (res) =>
-                              res.fieldKey === "expected pickup date"
+                            (res) => res.fieldKey === "expected pickup date"
                           )
                           .map((res) => {
                             return <>{differentdate(res.value)}</>;
                           })}
                       </td>
                       <td className="td-main">
-                      {res.order.customFields
-                          .filter((res) => res.fieldKey === "SpecialInstruction")
+                        {res.order.customFields
+                          .filter(
+                            (res) => res.fieldKey === "SpecialInstruction"
+                          )
                           .map((res) => {
                             return <>{res.value ? res.value : "no remark"}</>;
                           })}
@@ -345,9 +347,11 @@ const AtPickup = () => {
                               res.shipment.shipmentStages[0].arrivalTime
                             ) > "-1 days 0 hours 0 minutes"
                               ? "#00ff00"
-                              :  atvsnow(
-                                res.shipment.shipmentStages[0].arrivalTime
-                              ) <= '-1 days 0 hours 0 minutes' ?  "red" : ""
+                              : atvsnow(
+                                  res.shipment.shipmentStages[0].arrivalTime
+                                ) <= "-1 days 0 hours 0 minutes"
+                              ? "red"
+                              : "",
                         }}
                       >
                         {" "}
@@ -366,7 +370,7 @@ const AtPickup = () => {
                               : subtractDates1(
                                   res.shipment.shipmentStages[0].gateInTime,
                                   res.shipment.shipmentStages[0].arrivalTime
-                                ) <= '-1 days 0 hours 0 minutes'
+                                ) <= "-1 days 0 hours 0 minutes"
                               ? "red"
                               : "",
                         }}
@@ -374,7 +378,7 @@ const AtPickup = () => {
                         {subtractDates1(
                           res.shipment.shipmentStages[0].gateInTime,
                           res.shipment.shipmentStages[0].arrivalTime
-                        ) }
+                        )}
                       </td>
 
                       <td
@@ -387,14 +391,14 @@ const AtPickup = () => {
                                 .actualActivityStartTime,
                               res.shipment.shipmentStages[0].gateInTime
                             ) > "-1 days 0 hours 0 minutes"
-                            ? "#00ff00"
+                              ? "#00ff00"
                               : subtractDates1(
                                   res.shipment.shipmentStages[0]
                                     .actualActivityStartTime,
                                   res.shipment.shipmentStages[0].gateInTime
-                                )  <= '-1 days 0 hours 0 minutes'
-                                ? "red"
-                                : "",
+                                ) <= "-1 days 0 hours 0 minutes"
+                              ? "red"
+                              : "",
                         }}
                       >
                         {subtractDates1(
@@ -415,21 +419,21 @@ const AtPickup = () => {
                               res.shipment.shipmentStages[0]
                                 .actualActivityStartTime
                             ) > "-1 days 0 hours 0 minutes"
-                            ? "#00ff00"
+                              ? "#00ff00"
                               : subtractDates1(
                                   res.shipment.shipmentStages[0]
                                     .actualActivityEndTime,
                                   res.shipment.shipmentStages[0]
                                     .actualActivityStartTime
-                                ) <= '-1 days 0 hours 0 minutes'
-                                ? "red"
-                                : "",
+                                ) <= "-1 days 0 hours 0 minutes"
+                              ? "red"
+                              : "",
                         }}
                       >
                         {subtractDates1(
                           res.shipment.shipmentStages[0].actualActivityEndTime,
                           res.shipment.shipmentStages[0].actualActivityStartTime
-                        ) }
+                        )}
                       </td>
                     </tr>
                   );

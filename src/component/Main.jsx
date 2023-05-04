@@ -27,7 +27,7 @@ const Main = () => {
 
   const url1Data = {
     filters: {
-     customer:["BHARAT FRITZ WERNER LIMITED"],
+      customer: ["CELLO INDUSTRIES PRIVATE LIMITED"],
       orderDate: {
         from: 1680287400000,
       },
@@ -38,8 +38,8 @@ const Main = () => {
   const url2Data = {
     filters: {
       shipmentStatus: ["Planned", "Created", "Completed"],
-      // customer:["BHARAT FRITZ WERNER LIMITED"],
-      customer:["BHARAT FRITZ WERNER LIMITED"],
+      //customer: ["CELLO INDUSTRIES PRIVATE LIMITED"],
+      customer: ["CELLO INDUSTRIES PRIVATE LIMITED"],
       shipmentDate: {
         from: 1680287400000,
       },
@@ -58,8 +58,10 @@ const Main = () => {
     Promise.all([promise1, promise2]).then((message) => {
       let pendingResponse = [];
       for (let i = 0; i < message[0].data.data.length; i++) {
-        if ( message[0].data.data[i].secondaryStatus === "PARTIALLY_PLANNED" ||
-        message[0].data.data[i].secondaryStatus === "CREATED") {
+        if (
+          message[0].data.data[i].secondaryStatus === "PARTIALLY_PLANNED" ||
+          message[0].data.data[i].secondaryStatus === "CREATED"
+        ) {
           pendingResponse.push(message[0].data.data[i]);
         }
       }
@@ -238,7 +240,6 @@ const Main = () => {
       });
 
       setLoader(false);
-
     });
   }
 
@@ -542,7 +543,9 @@ const Main = () => {
 
   return (
     <div>
-      {loader ? <Loader /> :
+      {loader ? (
+        <Loader />
+      ) : (
         <>
           {" "}
           <div className="top"></div>
@@ -628,8 +631,7 @@ const Main = () => {
             </div>
           </div>
         </>
-      
-      }
+      )}
     </div>
   );
 };

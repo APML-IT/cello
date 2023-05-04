@@ -1,8 +1,8 @@
 import axios from "axios";
 
 export async function submitForm(inputs, ...temp) {
-  console.log(inputs,"inputs ssss" )
-  console.log(temp,"temp")
+  console.log(inputs, "inputs ssss");
+  console.log(temp, "temp");
   let dateTime = inputs.Pickup_Date;
   let date = new Date(dateTime).toString();
   let formattedDate = date.toLocaleString("en-US", {
@@ -30,7 +30,7 @@ export async function submitForm(inputs, ...temp) {
     Destination: null,
     "Vehicle Type": temp[0][3][0],
     "Transportation Service": "FTL",
-    "Customer(*)": "BHARAT FRITZ WERNER LIMITED",
+    "Customer(*)": "CELLO INDUSTRIES PRIVATE LIMITED",
     "Consignor(*)": inputs.Origin,
     "Consignee(*)": "Unknown",
     "Pickup Date(DD-MM-YYYY)": "16-02-2023",
@@ -40,19 +40,17 @@ export async function submitForm(inputs, ...temp) {
     "Measurement Type(*)": "weight",
     "Quantity(*)": "1",
     "Quantity UOM(*)": "Units",
-    "cf_Material" : inputs.Material,
-    "cf_SpecialInstruction" : inputs.SHPL_instructions,
-    "cf_expected pickup date" : formattedDate,
-    "cf_expected delivery date" : formattedDate1,
+    cf_Material: inputs.Material,
+    cf_SpecialInstruction: inputs.SHPL_instructions,
+    "cf_expected pickup date": formattedDate,
+    "cf_expected delivery date": formattedDate1,
     // "cf_Consignee 1": temp[0][2].cc1,
     // "cf_Consignee 2": temp[0][2].cc2,
     // "cf_Consignee 3": temp[0][2].cc3,
     // "cf_Consignee 4": temp[0][2].cc4,
-    "cf_destination": inputs.destination,
-    
+    cf_destination: inputs.destination,
   };
   orders.push(order);
-
 
   var config = {
     method: "post",
@@ -87,19 +85,19 @@ export function onOriginChange(sO) {
   let selectedLocation = "";
 
   switch (sO) {
-    case "BHARAT FRITZ WERNER LIMITED- Hosur":
-      selectedLocation = "Hosur";
+    case "CELLO INDUSTRIES PRIVATE LIMITED-DAMAN":
+      selectedLocation = "Daman";
       break;
 
-      case "BHARAT FRITZ WERNER LIMITED-Bangalore":
-        selectedLocation = "Bangalore";
-        break;
+    case "CELLO INDUSTRIES PRIVATE LIMITED-SOMNAT":
+      selectedLocation = "SOMNAT";
+      break;
 
     default:
       break;
   }
 
-  data[0] = "BHARAT FRITZ WERNER LIMITED";
+  data[0] = "CELLO INDUSTRIES PRIVATE LIMITED";
   data[1] = selectedLocation;
   data[2] = sO;
   data[3] = "Mumbai";

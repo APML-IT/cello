@@ -9,7 +9,7 @@ import {
   AiOutlineFileDone,
   AiOutlineAreaChart,
   AiOutlineLineChart,
-  AiOutlineLogout
+  AiOutlineLogout,
 } from "react-icons/ai";
 import {
   FaTruckPickup,
@@ -83,7 +83,7 @@ const Aside = () => {
   const url2Data = {
     filters: {
       shipmentStatus: ["Planned", "Created", "Completed"],
-      customer:["BHARAT FRITZ WERNER LIMITED"],
+      customer: ["BHARAT FRITZ WERNER LIMITED"],
       shipmentDate: {
         from: 1680287400000,
       },
@@ -93,7 +93,7 @@ const Aside = () => {
   const url3Data = {
     filters: {
       shipmentStatus: ["Planned", "Created"],
-      customer:["BHARAT FRITZ WERNER LIMITED"],
+      customer: ["BHARAT FRITZ WERNER LIMITED"],
     },
   };
 
@@ -175,7 +175,11 @@ const Aside = () => {
                 {/* <h5>
                 EPIROC 
               </h5> */}
-                <img src="http://www.bfwindia.com/wp-content/uploads/2020/06/bfw-logo.jpg" alt="" className="logo1" />
+                <img
+                  src="https://www.cellowriting.com/public/img/cello-logo.png"
+                  alt=""
+                  className="logo1"
+                />
               </>
             </div>
           </div>
@@ -217,10 +221,7 @@ const Aside = () => {
               <span>
                 <MdOutlinePendingActions className="custome-svg" />
               </span>
-              <h3>
-                PENDING ORDERS{" "}
-                
-              </h3>
+              <h3>PENDING ORDERS </h3>
             </NavLink>
 
             <NavLink
@@ -231,10 +232,7 @@ const Aside = () => {
                 {" "}
                 <FaTruckPickup className="custome-svg" />
               </span>
-              <h3>
-                ENROUTE FOR PICKUP{" "}
-                
-              </h3>
+              <h3>ENROUTE FOR PICKUP </h3>
             </NavLink>
 
             <NavLink
@@ -245,9 +243,7 @@ const Aside = () => {
                 {" "}
                 <FaTruckLoading className="custome-svg" />
               </span>
-              <h3>
-                AT PICKUP 
-              </h3>
+              <h3>AT PICKUP</h3>
             </NavLink>
 
             <NavLink
@@ -258,10 +254,7 @@ const Aside = () => {
                 {" "}
                 <GiTruck className="custome-svg" />
               </span>
-              <h3>
-                INTRANSIT{" "}
-                
-              </h3>
+              <h3>INTRANSIT </h3>
             </NavLink>
 
             <NavLink
@@ -272,10 +265,7 @@ const Aside = () => {
                 {" "}
                 <BsMinecartLoaded className="custome-svg" />
               </span>
-              <h3>
-                AT UNLOADING{" "}
-                
-              </h3>
+              <h3>AT UNLOADING </h3>
             </NavLink>
 
             <NavLink
@@ -286,13 +276,8 @@ const Aside = () => {
                 {" "}
                 <AiOutlineFileDone className="custome-svg" />
               </span>
-              <h3>
-                COMPLETE{" "}
-                
-              </h3>
+              <h3>COMPLETE </h3>
             </NavLink>
-
-
 
             <NavLink
               to="/pod"
@@ -302,9 +287,7 @@ const Aside = () => {
                 {" "}
                 <VscVmRunning className="custome-svg" />
               </span>
-              <h3>
-                POD 
-              </h3>
+              <h3>POD</h3>
             </NavLink>
 
             <NavLink
@@ -315,10 +298,7 @@ const Aside = () => {
                 {" "}
                 <RiBilliardsFill className="custome-svg" />
               </span>
-              <h3>
-                BILLING{" "}
-                
-              </h3>
+              <h3>BILLING </h3>
             </NavLink>
 
             <NavLink
@@ -329,9 +309,7 @@ const Aside = () => {
                 {" "}
                 <MdOutlinePayment className="custome-svg" />
               </span>
-              <h3>
-                PAYMENT 
-              </h3>
+              <h3>PAYMENT</h3>
             </NavLink>
 
             {/* <NavLink

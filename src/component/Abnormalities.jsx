@@ -23,7 +23,7 @@ const Abnormalities = () => {
   var param1 = {
     filters: {
       shipmentStatus: ["Planned", "Created"],
-      customer:["BHARAT FRITZ WERNER LIMITED"],
+      customer: ["CELLO INDUSTRIES PRIVATE LIMITED"],
       // "origin": ["Navi Mumbai","Mumbai","Bhiwandi","Hyderabad","Bangalore","Chennai"],
       shipmentDate: {
         from: 1680287400000,
@@ -33,7 +33,7 @@ const Abnormalities = () => {
 
   var data1 = {
     filters: {
-     customer:["BHARAT FRITZ WERNER LIMITED"],
+      customer: ["CELLO INDUSTRIES PRIVATE LIMITED"],
       orderDate: {
         from: 1680287400000,
       },
@@ -44,8 +44,8 @@ const Abnormalities = () => {
   var param2 = {
     filters: {
       shipmentStatus: ["Completed"],
-      // customer:["BHARAT FRITZ WERNER LIMITED"],
-      customer:["BHARAT FRITZ WERNER LIMITED"],
+      //customer: ["CELLO INDUSTRIES PRIVATE LIMITED"],
+      customer: ["CELLO INDUSTRIES PRIVATE LIMITED"],
       // "origin": ["Navi Mumbai","Mumbai","Bhiwandi","Hyderabad","Bangalore","Chennai"],
       shipmentDate: {
         from: 1680287400000,
@@ -55,7 +55,7 @@ const Abnormalities = () => {
 
   var data2 = {
     filters: {
-     customer:["BHARAT FRITZ WERNER LIMITED"],
+      customer: ["CELLO INDUSTRIES PRIVATE LIMITED"],
       orderDate: {
         from: 1680287400000,
       },
@@ -171,7 +171,9 @@ const Abnormalities = () => {
           <Loader />
         ) : (
           <>
-            <h1 style={{ color: "black", fontWeight: "500" }}>PENDING  &nbsp;{pendingShipmentX.length} </h1>
+            <h1 style={{ color: "black", fontWeight: "500" }}>
+              PENDING &nbsp;{pendingShipmentX.length}{" "}
+            </h1>
             <div className="two-tables">
               <table className="first-table" id="excel_table">
                 <thead>
@@ -185,94 +187,90 @@ const Abnormalities = () => {
                   </tr>
                 </thead>
                 <tbody>
-                {
-                    pendingShipmentX.map((res) => {
-                      return (
-                        <tr>
-                          <td className="table-td-short">{res.consignments[0].consignmentNo}</td>
-                          <td className="table-td-short">{res.consignments[0].consigner.name}
-                          </td>
-                          <td className="table-td-short">
+                  {pendingShipmentX.map((res) => {
+                    return (
+                      <tr>
+                        <td className="table-td-short">
+                          {res.consignments[0].consignmentNo}
+                        </td>
+                        <td className="table-td-short">
+                          {res.consignments[0].consigner.name}
+                        </td>
+                        <td className="table-td-short">
                           {res.customFields
-                          .filter((res) => res.fieldKey === "destination")
-                          .map((res) => {
-                            return <>{res.value}</>;
-                          })}
-                          </td>
-                          <td className="table-td-short">{res.issues && res.issues[0].issueType}</td>
-                          <td className="table-td-short">
-                          {
-                          differentdate(res.shipment.creationTime) 
-                        }
-                          </td>
-                          <td className="table-td-short">{
-                            res.issues[0].customFields
-                              .filter((res) => res.fieldKey === "Remarks : ")
-                              .map((res) => {
-                                return (
-                                  <>
-                                    {res.value}
-                                  </>
-                                );
-                              })}</td>
-                        </tr>
-                      )
-                    })
-                  }
+                            .filter((res) => res.fieldKey === "destination")
+                            .map((res) => {
+                              return <>{res.value}</>;
+                            })}
+                        </td>
+                        <td className="table-td-short">
+                          {res.issues && res.issues[0].issueType}
+                        </td>
+                        <td className="table-td-short">
+                          {differentdate(res.shipment.creationTime)}
+                        </td>
+                        <td className="table-td-short">
+                          {res.issues[0].customFields
+                            .filter((res) => res.fieldKey === "Remarks : ")
+                            .map((res) => {
+                              return <>{res.value}</>;
+                            })}
+                        </td>
+                      </tr>
+                    );
+                  })}
                 </tbody>
               </table>
               <div>
                 <div style={{ marginTop: "-3.2rem" }}>
                   <h1 style={{ color: "black", fontWeight: "500" }}>
-                    COMPLETED  &nbsp;{completeShipmentX.length}
+                    COMPLETED &nbsp;{completeShipmentX.length}
                   </h1>
                 </div>
                 <table className="second-table" id="excel_table">
                   <thead>
-                  <tr>
-                    <th className="table-th-short">gc Number </th>
-                    <th className="table-th-short">consigner</th>
-                    <th className="table-th-short">consignee</th>
-                    <th className="table-th-short">Issue Name </th>
-                    <th className="table-th-short">Created at </th>
-                    <th className="table-th-short">Remarks</th>
-                  </tr>
+                    <tr>
+                      <th className="table-th-short">gc Number </th>
+                      <th className="table-th-short">consigner</th>
+                      <th className="table-th-short">consignee</th>
+                      <th className="table-th-short">Issue Name </th>
+                      <th className="table-th-short">Created at </th>
+                      <th className="table-th-short">Remarks</th>
+                    </tr>
                   </thead>
                   <tbody>
-                  {
-                    pendingShipmentX.map((res) => {
+                    {pendingShipmentX.map((res) => {
                       return (
                         <tr>
-                          <td className="table-td-short">{res.consignments[0].consignmentNo}</td>
-                          <td className="table-td-short">{res.consignments[0].consigner.name}
+                          <td className="table-td-short">
+                            {res.consignments[0].consignmentNo}
                           </td>
                           <td className="table-td-short">
-                          {res.customFields
-                          .filter((res) => res.fieldKey === "destination")
-                          .map((res) => {
-                            return <>{res.value}</>;
-                          })}
+                            {res.consignments[0].consigner.name}
                           </td>
-                          <td className="table-td-short">{res.issues && res.issues[0].issueType}</td>
                           <td className="table-td-short">
-                          {
-                          differentdate(res.shipment.creationTime) 
-                        }
+                            {res.customFields
+                              .filter((res) => res.fieldKey === "destination")
+                              .map((res) => {
+                                return <>{res.value}</>;
+                              })}
                           </td>
-                          <td className="table-td-short">{
-                            res.issues[0].customFields
+                          <td className="table-td-short">
+                            {res.issues && res.issues[0].issueType}
+                          </td>
+                          <td className="table-td-short">
+                            {differentdate(res.shipment.creationTime)}
+                          </td>
+                          <td className="table-td-short">
+                            {res.issues[0].customFields
                               .filter((res) => res.fieldKey === "Remarks : ")
                               .map((res) => {
-                                return (
-                                  <>
-                                    {res.value}
-                                  </>
-                                );
-                              })}</td>
+                                return <>{res.value}</>;
+                              })}
+                          </td>
                         </tr>
-                      )
-                    })
-                  }
+                      );
+                    })}
                   </tbody>
                 </table>
               </div>

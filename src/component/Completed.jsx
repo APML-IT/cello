@@ -21,7 +21,7 @@ const Completed = () => {
 
   const url1Data = {
     filters: {
-     customer:["BHARAT FRITZ WERNER LIMITED"],
+      customer: ["CELLO INDUSTRIES PRIVATE LIMITED"],
       orderDate: {
         from: 1680287400000,
       },
@@ -32,8 +32,8 @@ const Completed = () => {
   const url2Data = {
     filters: {
       shipmentStatus: ["Completed"],
-      // customer:["BHARAT FRITZ WERNER LIMITED"],
-      customer:["BHARAT FRITZ WERNER LIMITED"],
+      //customer: ["CELLO INDUSTRIES PRIVATE LIMITED"],
+      customer: ["CELLO INDUSTRIES PRIVATE LIMITED"],
       shipmentDate: {
         from: 1680287400000,
       },
@@ -238,21 +238,21 @@ const Completed = () => {
   function gcimg(a) {
     var abc;
     for (let i = 0; i < a.length; i++) {
-      if (a[i]['fieldKey'] === "GC Copy Image") {
-        if(a[i]['value']!==null&&a[i].value!=="[]"){
-          abc = a[i]['value'].split(':\"')[1].split('","')[0]
-          console.log(abc)
-          break
-        }else {
-          abc = "https://static.dieuhau.com/2016/10/uploadfailed.jpg"
+      if (a[i]["fieldKey"] === "GC Copy Image") {
+        if (a[i]["value"] !== null && a[i].value !== "[]") {
+          abc = a[i]["value"].split(':"')[1].split('","')[0];
+          console.log(abc);
+          break;
+        } else {
+          abc = "https://static.dieuhau.com/2016/10/uploadfailed.jpg";
         }
       } else {
-        abc = "https://static.dieuhau.com/2016/10/uploadfailed.jpg"
+        abc = "https://static.dieuhau.com/2016/10/uploadfailed.jpg";
       }
     }
-    return abc
+    return abc;
   }
-  console.log(combo)
+  console.log(combo);
 
   function differentdate(a) {
     let date = new Date(a);
@@ -325,9 +325,9 @@ const Completed = () => {
             ) : (
               <table className="main-table" id="excel_table">
                 <thead>
-                <tr>
+                  <tr>
                     <th className="table-th">Shipment Number </th>
-                    
+
                     <th className="table-th">GC Number </th>
                     <th className="table-th">Stages</th>
                     <th className="table-th">Vehicle No. </th>
@@ -364,23 +364,86 @@ const Completed = () => {
                         <td className="td-main">
                           {res.shipment.shipmentNumber}
                         </td>
-                       
+
                         <td
                           className="td-main"
                           style={{ paddingRight: "12rem" }}
                         >
                           {" "}
                           <a
-                            href={gcimg(res.shipment.consignments[0].customFields)}
+                            href={gcimg(
+                              res.shipment.consignments[0].customFields
+                            )}
                             target="_blank"
-                            style={{ fontWeight: "bolder", color:gcimg(res.shipment.consignments[0].customFields)==='https://static.dieuhau.com/2016/10/uploadfailed.jpg' ? "red" : gcimg(res.shipment.consignments[0].customFields)!=='https://static.dieuhau.com/2016/10/uploadfailed.jpg' ? "#02ff02" : "" }}
+                            style={{
+                              fontWeight: "bolder",
+                              color:
+                                gcimg(
+                                  res.shipment.consignments[0].customFields
+                                ) ===
+                                "https://static.dieuhau.com/2016/10/uploadfailed.jpg"
+                                  ? "red"
+                                  : gcimg(
+                                      res.shipment.consignments[0].customFields
+                                    ) !==
+                                    "https://static.dieuhau.com/2016/10/uploadfailed.jpg"
+                                  ? "#02ff02"
+                                  : "",
+                            }}
                           >
                             {res.shipment.consignments[0].consignmentNo}
                           </a>{" "}
                         </td>
-                        <td style={{padding:"0px"}} className={early_delay(totaldis(res.shipment.consignments[0].customFields), vehicletype(res.order['customFields']), (res.shipment['shipmentStages'][0]['departureTime']),res.shipment['shipmentStages'][1]['arrivalTime']) === 'Early' ? 'early' : early_delay(totaldis(res.shipment.consignments[0].customFields), vehicletype(res.order['customFields']), (res.shipment['shipmentStages'][0]['departureTime']),res.shipment['shipmentStages'][1]['arrivalTime']) === 'Delayed' ?'delay' : early_delay(totaldis(res.shipment.consignments[0].customFields), vehicletype(res.order['customFields']), (res.shipment['shipmentStages'][0]['departureTime']),res.shipment['shipmentStages'][1]['arrivalTime']) === 'On time' ? "ontime" : ""} >
-                      {early_delay(totaldis(res.shipment.consignments[0].customFields), vehicletype(res.order['customFields']), (res.shipment['shipmentStages'][0]['departureTime']),res.shipment['shipmentStages'][1]['arrivalTime'])}
-                      </td>
+                        <td
+                          style={{ padding: "0px" }}
+                          className={
+                            early_delay(
+                              totaldis(
+                                res.shipment.consignments[0].customFields
+                              ),
+                              vehicletype(res.order["customFields"]),
+                              res.shipment["shipmentStages"][0][
+                                "departureTime"
+                              ],
+                              res.shipment["shipmentStages"][1]["arrivalTime"]
+                            ) === "Early"
+                              ? "early"
+                              : early_delay(
+                                  totaldis(
+                                    res.shipment.consignments[0].customFields
+                                  ),
+                                  vehicletype(res.order["customFields"]),
+                                  res.shipment["shipmentStages"][0][
+                                    "departureTime"
+                                  ],
+                                  res.shipment["shipmentStages"][1][
+                                    "arrivalTime"
+                                  ]
+                                ) === "Delayed"
+                              ? "delay"
+                              : early_delay(
+                                  totaldis(
+                                    res.shipment.consignments[0].customFields
+                                  ),
+                                  vehicletype(res.order["customFields"]),
+                                  res.shipment["shipmentStages"][0][
+                                    "departureTime"
+                                  ],
+                                  res.shipment["shipmentStages"][1][
+                                    "arrivalTime"
+                                  ]
+                                ) === "On time"
+                              ? "ontime"
+                              : ""
+                          }
+                        >
+                          {early_delay(
+                            totaldis(res.shipment.consignments[0].customFields),
+                            vehicletype(res.order["customFields"]),
+                            res.shipment["shipmentStages"][0]["departureTime"],
+                            res.shipment["shipmentStages"][1]["arrivalTime"]
+                          )}
+                        </td>
                         <td className="td-main">
                           {
                             res.shipment.fleetInfo.vehicle
@@ -388,14 +451,10 @@ const Completed = () => {
                           }
                         </td>
                         <td className="td-main">
-                        {res.order.lineItems[0].allowedLoadTypes[0]?.name}
-
+                          {res.order.lineItems[0].allowedLoadTypes[0]?.name}
                         </td>
                         <td className="td-main">
-                          {
-                          differentdate(res.shipment.creationTime) 
-
-                          }
+                          {differentdate(res.shipment.creationTime)}
                         </td>
                         <td className="td-main">
                           {res.order.customFields
@@ -442,17 +501,14 @@ const Completed = () => {
                         </td>
                         <td className="td-main">
                           {" "}
-                          {
-                            res.shipment.consignments[0].consigner.name
-                          }
+                          {res.shipment.consignments[0].consigner.name}
                         </td>
                         <td className="td-main">
-                        {res.order.customFields
-                          .filter((res) => res.fieldKey === "destination")
-                          .map((res) => {
-                            return <>{res.value ? res.value : "--"}</>;
-                          })}
-
+                          {res.order.customFields
+                            .filter((res) => res.fieldKey === "destination")
+                            .map((res) => {
+                              return <>{res.value ? res.value : "--"}</>;
+                            })}
                         </td>
                         <td className="td-main">
                           {" "}
@@ -754,7 +810,7 @@ const Completed = () => {
                             res.shipment.shipmentStages[1].departureTime
                           )}
                         </td>
-                        <td className="td-main" style={{lineHeight:"2rem"}}>
+                        <td className="td-main" style={{ lineHeight: "2rem" }}>
                           {" "}
                           <span>
                             {res.shipment.consignments[0]?.pod &&
@@ -774,7 +830,7 @@ const Completed = () => {
                               "WATING"
                             )}
                           </span>
-                          <br/>
+                          <br />
                           <span>
                             {res.shipment.consignments[0]?.pod &&
                             res.shipment.consignments[0]?.pod?.documents ? (
