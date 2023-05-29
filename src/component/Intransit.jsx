@@ -54,15 +54,12 @@ const Intransit = () => {
   const url2 =
     "https://apis.fretron.com/automate/autoapi/run/67953f4a-fb2d-4548-a86f-7b4ce2d710d2";
 
-  const url3 =
-    "https://script.googleusercontent.com/a/macros/agarwalpackers.com/echo?user_content_key=liluZGoKsVsI56pRMCbhaWgXdKTyvEzljs8wXtM7ZZwxRvYrxCKbroPEdPlGYY5qa9EQ6vY05Qi1xKcZE-Y8QzE0ZFrkxCriOJmA1Yb3SEsKFZqtv3DaNYcMrmhZHmUMi80zadyHLKCzuoJ5WTSD9188tqLxoWbKVeS6iIHTYzLJN6pUfYvVdeVlG5jFSmZBnga7jA1jJv2Ff-ndfXe0m_cBNwR9NdQAJQvZbyK2Sn14j10FjQKB0WW2AeJY_LhcNDLB45iwYI_Ty7jWPDs9-kALmaJ23tE4L5nWh-m0S0U&lib=Mste7nhVMiwHbCBqAdeBeQ0a1jiuL8Xjw";
 
   async function fetching() {
     const promise1 = await axios.post(url1, url1Data, headers);
     const promise2 = await axios.post(url2, url2Data, headers);
-    const promise3 = await axios.get(url3, Infinity);
 
-    Promise.all([promise1, promise2, promise3]).then((message) => {
+    Promise.all([promise1, promise2]).then((message) => {
       let pendingResponse = [];
       for (let i = 0; i < message[1].data.data.length; i++) {
         if (
@@ -108,37 +105,7 @@ const Intransit = () => {
         setCombo(pink1);
       });
 
-      var datamain = [];
-      for (var i = 0; i < message[2].data.length; i++) {
-        if (
-          message[2].data[i]?.rc_regn_no !== "" &&
-          message[2].data[i]?.rc_regn_no !== "#N/A" &&
-          message[2].data[i]?.rc_regn_no !== "Vehicle Number"
-        ) {
-          var obj = {
-            rc_fit_upto: message[2].data[i].rc_fit_upto,
-            rc_regn_no: message[2].data[i]?.rc_regn_no,
-            rc_insurance_upto: message[2].data[i]?.rc_insurance_upto,
-            rc_pucc_upto: message[2].data[i]?.rc_pucc_upto,
-            rc_np_upto: message[2].data[i]?.rc_np_upto,
-            rc_permit_valid_upto: message[2].data[i]?.rc_permit_valid_upto,
-          };
-          datamain.push(obj);
-        }
-      }
-
-      var main = [];
-      combo.map((res) => {
-        for (var n = 0; n < datamain.length; n++) {
-          if (
-            datamain[n].rc_regn_no ===
-            res.shipment.fleetInfo.vehicle.vehicleRegistrationNumber
-          ) {
-            main.push(datamain[n]);
-          }
-          setSheetData(main);
-        }
-      });
+     
       setLoader(false);
     });
   }
